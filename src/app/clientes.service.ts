@@ -16,16 +16,7 @@ export class ClientesService {
     return this.http.post<Cliente>(baseUrl, cliente)
   }
 
-  //clientesLista(): Observable<Cliente[]> {
-  //}
-
-  getCliente():Cliente[] {
-    let cliente = new Cliente();
-    cliente.id = 1;
-    cliente.nome = "Luciano";
-    cliente.cpf = "05207381954";
-    cliente.dataCadastro = "20/05/20210";
-    return [cliente];
+  clientesLista(): Observable<Cliente[]> {
+    return this.http.get<Cliente[]>(baseUrl);
   }
-
 }
