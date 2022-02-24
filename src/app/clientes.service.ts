@@ -19,4 +19,8 @@ export class ClientesService {
   clientesLista(): Observable<Cliente[]> {
     return this.http.get<Cliente[]>(baseUrl);
   }
+
+  AtualizarCliente(id: number): Observable<Cliente> {
+    return this.http.get<any>(`${baseUrl}/${id}`)
+  }
 }
