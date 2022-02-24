@@ -15,4 +15,17 @@ export class ClientesService {
   salvar(cliente : Cliente): Observable<Cliente> {
     return this.http.post<Cliente>(baseUrl, cliente)
   }
+
+  //clientesLista(): Observable<Cliente[]> {
+  //}
+
+  getCliente():Cliente[] {
+    let cliente = new Cliente();
+    cliente.id = 1;
+    cliente.nome = "Luciano";
+    cliente.cpf = "05207381954";
+    cliente.dataCadastro = "20/05/20210";
+    return [cliente];
+  }
+
 }
