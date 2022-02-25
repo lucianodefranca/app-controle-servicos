@@ -10,6 +10,8 @@ import { Cliente } from '../cliente';
 })
 export class ClientesFormComponent implements OnInit {
 
+  id_tec = '';
+
   cliente: Cliente = {
     id: '',
     nome: '',
@@ -23,25 +25,14 @@ export class ClientesFormComponent implements OnInit {
     private service : ClientesService,
     private router: Router,
     private route: ActivatedRoute
-    ) {
-    this.cliente = new Cliente;
-   }
+    ) { }
 
   ngOnInit(): void {
-    let params = this.route.snapshot.params
-    if(params && params.value && params.value.id) {
-      let id = params.value.id;
-      this.service.AtualizarCliente(this.cliente.id).subscribe(res => {
-        this.cliente = res
-      })
-    }
+    this.id_tec = this.route.snapshot.paramMap.get('id')!
+    this.buscarPorId();
   }
 
-  atualizar(): void {
-
-  }
-
-  onSubmit() {
+  salvarCliente() {
     this.service.salvar(this.cliente).subscribe(response => {
       this.success = true;
 
@@ -50,8 +41,24 @@ export class ClientesFormComponent implements OnInit {
     });
   }
 
+  atualizar(): void {
+    this.service.atualizarCliente(this.cliente).subscribe(response => {
+      console.log(response);
+
+    }, err => {
+      console.log(err.error.errors);
+
+    })
+  }
+
   voltar() {
     this.router.navigate(['clientes-lista'])
+  }
+
+  buscarPorId(): void {
+    this.service.buscarPorId(this.id_tec).subscribe(response => {
+      this.cliente = response;
+    })
   }
 
 }

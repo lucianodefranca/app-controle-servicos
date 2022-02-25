@@ -12,6 +12,11 @@ export class ClientesService {
 
   constructor(private http: HttpClient) { }
 
+  buscarPorId(id : any): Observable<Cliente> {
+    const url = `${baseUrl}/${id}`;
+    return this.http.get<Cliente>(url);
+  }
+
   salvar(cliente : Cliente): Observable<Cliente> {
     return this.http.post<Cliente>(baseUrl, cliente)
   }
@@ -20,7 +25,8 @@ export class ClientesService {
     return this.http.get<Cliente[]>(baseUrl);
   }
 
-  AtualizarCliente(id: number): Observable<Cliente> {
-    return this.http.get<any>(`${baseUrl}/${id}`)
+  atualizarCliente(cliente : Cliente): Observable<Cliente> {
+    const url = `${baseUrl}/${cliente.id}`;
+    return this.http.put<Cliente>(url, cliente);
   }
 }
