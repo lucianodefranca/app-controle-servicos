@@ -32,7 +32,7 @@ export class ClientesFormComponent implements OnInit {
     this.buscarPorId();
   }
 
-  salvarCliente() {
+  salvarCliente(): void {
     this.service.salvar(this.cliente).subscribe(response => {
       this.success = true;
 

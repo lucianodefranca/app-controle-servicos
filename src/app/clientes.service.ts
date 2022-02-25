@@ -18,7 +18,8 @@ export class ClientesService {
   }
 
   salvar(cliente : Cliente): Observable<Cliente> {
-    return this.http.post<Cliente>(baseUrl, cliente)
+    const url = `${baseUrl}`;
+    return this.http.post<Cliente>(url, cliente);
   }
 
   clientesLista(): Observable<Cliente[]> {
