@@ -18,6 +18,7 @@ export class ClientesFormComponent implements OnInit {
     cpf: '',
     dataCadastro: ''
   };
+
   success: boolean = false;
   errors: string[] = [];
 
@@ -35,6 +36,7 @@ export class ClientesFormComponent implements OnInit {
   salvarCliente(): void {
     this.service.salvar(this.cliente).subscribe(response => {
       this.success = true;
+      this.router.navigate(['clientes-lista'])
 
     }, erroResponse => {
       this.errors.push(JSON.stringify(erroResponse.error.errors));
@@ -43,7 +45,7 @@ export class ClientesFormComponent implements OnInit {
 
   atualizar(): void {
     this.service.atualizarCliente(this.cliente).subscribe(response => {
-      console.log(response);
+      this.router.navigate(['clientes-lista'])
 
     }, err => {
       console.log(err.error.errors);

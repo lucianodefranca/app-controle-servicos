@@ -1,6 +1,6 @@
-<h1 class="mt-4">Clientes</h1>
+<h1 class="mt-4 ml-4">Clientes</h1>
 <ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item active">{{ cliente.id ? 'Edição' : 'Cadastro' }}</li>
+    <li class="breadcrumb-item active ml-3">{{ cliente.id ? 'Edição' : 'Cadastro' }}</li>
 </ol>
 
 <div class="container">
@@ -15,7 +15,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row" *ngIf="cliente.id && cliente.dataCadastro">
             <div class="col-md-6">
                 <div class="form-group">
                     <label>ID:</label>

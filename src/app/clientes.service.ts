@@ -30,4 +30,9 @@ export class ClientesService {
     const url = `${baseUrl}/${cliente.id}`;
     return this.http.put<Cliente>(url, cliente);
   }
+
+  deletarCliente(cliente : Cliente): Observable<any> {
+    const url = `${baseUrl}/${cliente.id}`;
+    return this.http.delete<any>(url);
+  }
 }
