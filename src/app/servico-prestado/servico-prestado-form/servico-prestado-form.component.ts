@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { ServicoPrestadoService } from './../../servico-prestado.service';
 import { ServicoPrestado } from '../servicoPrestado';
 import { ClientesService } from './../../clientes.service';
 import { Cliente } from './../../clientes/cliente';
@@ -15,7 +17,8 @@ export class ServicoPrestadoFormComponent implements OnInit {
 
   constructor(
     private clientesService: ClientesService,
-
+    private service: ServicoPrestadoService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -29,7 +32,10 @@ export class ServicoPrestadoFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.servico);
+    this.service.salvarServico(this.servico).subscribe(response => {
+        console.log(response);
+
+    })
 
   }
 
