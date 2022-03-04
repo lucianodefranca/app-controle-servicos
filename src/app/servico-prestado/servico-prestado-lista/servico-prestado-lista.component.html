@@ -1,6 +1,6 @@
-<h1 class="mt-4">Serviços</h1>
+<h1 class="mt-4 ml-4">Serviços</h1>
 <ol class="breadcump mb-4">
-    <li class="breadcump-item active">Consulta</li>
+    <h4 class="breadcump-item">Consulta</h4>
 </ol>
 
 <div class="container">
@@ -12,20 +12,25 @@
             </div>
 
             <div class="col-md-6">
-                <label for="inputmes">Mês: </label>
+                <label for="inputmes">Mês:
                 <select [(ngModel)]="mes" name="mes" [ngModelOptions]="{standalone: true}">
                   <option value="">Selecione...</option>
                   <option *ngFor="let mes of meses" [value]="mes">
                       {{ mes }}
                   </option>
                 </select>
+              </label>
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-3">
-                <button class="btn btn-primary">
+        <div class="row mt-2">
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-primary">
                   <i class="fa fa-search"></i> Consultar
+                </button>
+
+                <button type="button" class="btn btn-warning ml-1" routerLink="/servico-prestado-form">
+                  <i class="fa fa-plus"></i> Novo
                 </button>
             </div>
         </div>
