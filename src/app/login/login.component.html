@@ -7,11 +7,11 @@
                         <div class="card shadow-lg border-0 rounded-lg mt-5">
                             <div class="card-header">
                                 <h3 class="text-center font-weight-light my-4">
-                                    Entrar
+                                    {{ !cadastrando ? 'Entrar' : 'Cadastrar Novo Usuário' }}
                                 </h3>
                             </div>
                             <div class="card-body">
-                                <div class="alert alert-danger">
+                                <div class="alert alert-danger" *ngIf="mensagemErro">
                                     Login e/ou Senha inválido(a).
                                 </div>
 
@@ -26,10 +26,24 @@
                                         <input type="password" name="senha" [(ngModel)]="senha" class="form-control py-4" placeholder="Digite sua senha">
                                     </div>
 
-                                    <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                        <button type="submit" class="btn btn-primary">Enviar</button>
+                                    <div class="form-group align-items-center justify-content-between mt-4 mb-0">
+                                        <button *ngIf="!cadastrando" type="submit" class="btn btn-primary">Enviar</button>
+
+                                        <button *ngIf="cadastrando" type="button" class="btn btn-success">Cadastrar</button>
+
+                                        <button *ngIf="cadastrando" (click)="cancelaCadastro()" type="button" class="btn btn-danger ml-1">Cancelar</button>
                                     </div>
+
+
                                 </form>
+
+                                <div class="card-footer text-center">
+                                    <div class="small">
+                                        <a href="#" (click)="preparaCadastro($event)">
+                                          Não possui Usuário? Cadastre-se!
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
