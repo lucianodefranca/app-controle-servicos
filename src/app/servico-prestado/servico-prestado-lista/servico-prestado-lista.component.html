@@ -30,4 +30,29 @@
             </div>
         </div>
     </form>
+
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Cliente</th>
+                        <th>Descrição</th>
+                        <th>Valor</th>
+                        <th>Data</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let x of lista">
+                        <td>{{ x.cliente }}</td>
+                        <td>{{ x.descricao }}</td>
+                        <td>{{ x.valor }}</td>
+                        <td>{{ x.data }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
 </div>
