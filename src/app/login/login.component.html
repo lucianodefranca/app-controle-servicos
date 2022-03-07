@@ -29,7 +29,7 @@
                                     <div class="form-group align-items-center justify-content-between mt-4 mb-0">
                                         <button *ngIf="!cadastrando" type="submit" class="btn btn-primary">Enviar</button>
 
-                                        <button *ngIf="cadastrando" type="button" class="btn btn-success">Cadastrar</button>
+                                        <button (click)="cadastrar()" *ngIf="cadastrando" type="button" class="btn btn-success">Cadastrar</button>
 
                                         <button *ngIf="cadastrando" (click)="cancelaCadastro()" type="button" class="btn btn-danger ml-1">Cancelar</button>
                                     </div>

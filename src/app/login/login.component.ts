@@ -1,4 +1,6 @@
+import { AuthService } from './../auth.service';
 import { Component } from '@angular/core';
+import { Usuario } from './usuario';
 
 @Component({
   selector: 'app-login',
@@ -7,12 +9,16 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
+  user: Usuario = {}
+
   usuario?: string;
   senha?: string;
   mensagemErro: boolean = false;
   cadastrando?: boolean;
 
-  constructor() { }
+  constructor(
+    private authService: AuthService
+  ) { }
 
   onSubmit() {
     console.log(`User: ${this.usuario}, Pass: ${this.senha}`);
@@ -25,6 +31,16 @@ export class LoginComponent {
 
   cancelaCadastro() {
     this.cadastrando = false;
+  }
+
+  cadastrar() {
+    this.user.username = this.usuario;
+    this.user.password = this.senha;
+    this.authService.salvar(this.user)
+      .subscribe(response => {
+        console.log(this.user);
+
+      })
   }
 
 }
