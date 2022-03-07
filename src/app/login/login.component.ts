@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AuthService } from './../auth.service';
 import { Component } from '@angular/core';
 import { Usuario } from './usuario';
@@ -17,11 +18,17 @@ export class LoginComponent {
   cadastrando?: boolean;
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   onSubmit() {
-    console.log(`User: ${this.usuario}, Pass: ${this.senha}`);
+    this.authService.tentarLogar(this.usuario!, this.senha!)
+      .subscribe(response => {
+        console.log(response);
+
+        this.router.navigate(['/home']);
+      })
   }
 
   preparaCadastro(event: any) {
