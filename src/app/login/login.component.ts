@@ -38,6 +38,10 @@ export class LoginComponent {
     this.user.password = this.senha;
     this.authService.salvar(this.user)
       .subscribe(response => {
+        this.cadastrando = false;
+        this.usuario = '',
+        this.senha = ''
+
         console.log(this.user);
 
       })
