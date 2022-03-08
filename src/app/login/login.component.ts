@@ -25,7 +25,9 @@ export class LoginComponent {
   onSubmit() {
     this.authService.tentarLogar(this.usuario!, this.senha!)
       .subscribe(response => {
-        console.log(response);
+
+        const access_token = JSON.stringify(response);
+        localStorage.setItem('access_token', access_token);
 
         this.router.navigate(['/home']);
       })
@@ -48,9 +50,6 @@ export class LoginComponent {
         this.cadastrando = false;
         this.usuario = '',
         this.senha = ''
-
-        console.log(this.user);
-
       })
   }
 
